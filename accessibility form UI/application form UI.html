@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessible Form UI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      padding: 2rem;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input:focus {
+      outline: 2px solid #005fcc;
+      border-color: #005fcc;
+    }
+
+    .error-message {
+      font-size: 0.9rem;
+      color: #b00020;
+      margin-top: 0.3rem;
+    }
+
+    .toggle-btn {
+      margin-top: 0.5rem;
+      background: none;
+      border: none;
+      color: #005fcc;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .toggle-btn:focus {
+      outline: 2px dashed #005fcc;
+    }
+
+    progress {
+      width: 100%;
+      height: 20px;
+      margin-top: 1rem;
+    }
+
+    fieldset {
+      margin-top: 1.5rem;
+      border: none;
+      padding: 0;
+    }
+
+    legend {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .check {
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    .submit-btn {
+      margin-top: 2rem;
+      padding: 0.8rem;
+      width: 100%;
+      background: #005fcc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background: #004bb5;
+    }
+
+    .submit-btn:focus {
+      outline: 2px solid #004bb5;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1 id="form-title">Create Account</h1>
+    <form aria-labelledby="form-title">
+      <!-- Full Name -->
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required aria-required="true" />
+
+      <!-- Email -->
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error" aria-invalid="true" />
+      <p id="email-error" class="error-message">Please enter a valid email address.</p>
+
+      <!-- Password -->
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required aria-required="true" aria-describedby="password-hint" />
+      <p id="password-hint" class="error-message">Must be at least 8 characters, include a number and a symbol.</p>
+      <button type="button" class="toggle-btn" aria-label="Password is hidden">Show Password</button>
+
+      <!-- Confirm Password -->
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" name="confirm-password" required aria-required="true" />
+
+      <!-- Progress Bar -->
+      <label for="progress">Form Completion</label>
+      <progress id="progress" value="50" max="100"></progress>
+
+      <!-- Checklist -->
+      <fieldset>
+        <legend>Checklist</legend>
+        <ul>
+          <li><span class="check" aria-hidden="true">✔️</span> All fields filled</li>
+          <li><span class="check" aria-hidden="true">✔️</span> Password meets criteria</li>
+          <li><span class="check" aria-hidden="true">❌</span> Email format valid</li>
+        </ul>
+      </fieldset>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">Create Account</button>
+    </form>
+  </div>
+</body>
+</html>
